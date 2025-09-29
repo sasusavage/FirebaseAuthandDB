@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase Phone Directory</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="auth-card" id="authCard">
+        <h1 class="brand">Phone Directory</h1>
+        <p class="subtitle">Sign up or log in to manage your contacts.</p>
+
+        <form id="signupForm" class="auth-form hidden">
+          <h2>Create account</h2>
+          <label>
+            <span>Email</span>
+            <input type="email" id="signupEmail" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" id="signupPassword" autocomplete="new-password" required />
+          </label>
+          <button type="submit" class="primary">Sign up</button>
+          <p class="switch">Already have an account? <button type="button" data-switch="login">Log in</button></p>
+        </form>
+
+        <form id="loginForm" class="auth-form">
+          <h2>Welcome back</h2>
+          <label>
+            <span>Email</span>
+            <input type="email" id="loginEmail" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" id="loginPassword" autocomplete="current-password" required />
+          </label>
+          <button type="submit" class="primary">Log in</button>
+          <p class="switch">New here? <button type="button" data-switch="signup">Create account</button></p>
+        </form>
+
+        <div class="auth-message" id="authMessage" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="dashboard hidden" id="dashboard">
+        <header class="dashboard__header">
+          <div>
+            <h2>My contacts</h2>
+            <p id="userEmail" class="dashboard__user"></p>
+          </div>
+          <button id="signOutBtn" class="secondary">Sign out</button>
+        </header>
+
+        <form id="contactForm" class="contact-form">
+          <h3>Add contact</h3>
+          <div class="grid">
+            <label>
+              <span>Name</span>
+              <input type="text" id="contactName" required />
+            </label>
+            <label>
+              <span>Phone</span>
+              <input type="tel" id="contactPhone" required />
+            </label>
+            <label>
+              <span>Notes</span>
+              <input type="text" id="contactNotes" />
+            </label>
+          </div>
+          <button type="submit" class="primary">Save contact</button>
+          <div class="form-message" id="contactMessage" role="status" aria-live="polite"></div>
+        </form>
+
+        <section class="contact-list" aria-live="polite" aria-busy="false">
+          <header class="contact-list__header">
+            <h3>Saved contacts</h3>
+            <button id="refreshContacts" class="secondary">Refresh</button>
+          </header>
+          <ul id="contactsContainer" class="contacts"></ul>
+          <template id="contactTemplate">
+            <li class="contact-card">
+              <div>
+                <strong data-field="name"></strong>
+                <span data-field="phone"></span>
+                <p data-field="notes"></p>
+              </div>
+              <div class="contact-card__actions">
+                <button type="button" data-action="edit">Edit</button>
+                <button type="button" data-action="delete" class="danger">Delete</button>
+              </div>
+            </li>
+          </template>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

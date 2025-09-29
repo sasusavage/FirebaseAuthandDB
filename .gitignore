@@ -1,0 +1,6 @@
+cred.json
+.env
+.venv/
+__pycache__/
+*.pyc
+*.log
